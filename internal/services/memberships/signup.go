@@ -16,7 +16,7 @@ func (s *service) SignUp(ctx context.Context, req memberships.SignUpRequest) err
 	}
 
 	if user != nil {
-		return errors.New("Username or email already exists!")
+		return errors.New("Username or email already exist")
 	}
 
 	pass, err := bcrypt.GenerateFromPassword([]byte(req.Password), bcrypt.DefaultCost)
@@ -26,9 +26,9 @@ func (s *service) SignUp(ctx context.Context, req memberships.SignUpRequest) err
 
 	now := time.Now()
 	model := memberships.UserModel{
-		Email : req.Email,
-		Username : req.Username,
-		Password : string(pass),
+		Email     : req.Email,
+		Username  : req.Username,
+		Password  : string(pass),
 		CreatedAt : now,
 		UpdatedAt : now,
 		CreatedBy : req.Email,

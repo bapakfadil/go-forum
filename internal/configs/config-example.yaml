@@ -1,6 +1,7 @@
 service:
   # Insert desired port to run this application
   port: ":"
+  secretJWT: "[insert your secretJWT]"
 database:
   # Fill with your actual database configuration
   dataSourceName: "[username]:[password]@tcp(localhost:[db-port])/[database-name]"
