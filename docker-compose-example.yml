@@ -1,0 +1,21 @@
+version: "3.1"
+services:
+  db:
+    image: mysql:8.3
+    container_name: local-mysql-fast-campus
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=[password]
+      - MYSQL_DATABASE=[database-name]
+    volumes:
+      - /MyProjects/forum/forum_mysql/db:/var/lib/mysql
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: phpmyadmin
+    restart: always
+    ports:
+      - 3307:80
+    environment:
+      - PMA_ARBITRARY=1

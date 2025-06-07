@@ -1,0 +1,8 @@
+# IDE Config
+.idea
+
+# Config
+internal/configs/config.yaml
+docker-compose.yml
+Makefile
+
