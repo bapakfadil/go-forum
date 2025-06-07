@@ -18,4 +18,4 @@ This project is **currently in active development**.
 
 ## License
 
-This project is licensed under the [License Name, e.g., MIT License]. See the `LICENSE
+This project is licensed under the [License Name, e.g., MIT License]. See the `LICENSE` file for more details.

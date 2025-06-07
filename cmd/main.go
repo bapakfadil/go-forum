@@ -6,6 +6,7 @@ import (
 	"github.com/bapakfadil/fastcampus/internal/configs"
 	"github.com/bapakfadil/fastcampus/internal/handlers/memberships"
 	membershipRepo "github.com/bapakfadil/fastcampus/internal/repositories/memberships"
+	membershipSvc "github.com/bapakfadil/fastcampus/internal/services/memberships"
 	"github.com/bapakfadil/fastcampus/pkg/internalsql"
 	"github.com/gin-gonic/gin"
 )
@@ -37,9 +38,11 @@ func main() {
 		log.Fatal("Gagal inisiasi database!", err)
 	}
 
-	_ = membershipRepo.NewRepository(db)
+	membershipRepo := membershipRepo.NewRepository(db)
+
+	membershipService := membershipSvc.NewService(membershipRepo)
 	
-	membershipHandler := memberships.NewHandler(r)
+	membershipHandler := memberships.NewHandler(r, membershipService)
 	membershipHandler.RegisterRoute()
 
 	r.Run(cfg.Service.Port) // listen and run the server
