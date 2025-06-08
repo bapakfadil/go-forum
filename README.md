@@ -1,4 +1,4 @@
-# Go Discussion Forum (v0.1)
+# Go Discussion Forum
 
 Discussion Forum REST API made using Go language
 
