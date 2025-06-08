@@ -12,7 +12,7 @@ func CreateToken(id int64, username, secretKey string) (string, error) {
 		jwt.MapClaims{
 			"id": id,
 			"username": username,
-			"expired": time.Now().Add(10 * time.Minute).Unix(),
+			"exp": time.Now().Add(10 * time.Minute).Unix(),
 		},
 	)
 
@@ -39,7 +39,7 @@ func ValidateToken(tokenStr, secretKey string) (int64, string, error) {
 	}
 
 	if !token.Valid {
-		return 0, "", errors.New("Invalid Token!")
+		return 0, "", errors.New("invalid Token")
 	}
 
 	return int64(claims["id"].(float64)), claims["username"].(string), nil
