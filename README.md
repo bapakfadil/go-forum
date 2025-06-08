@@ -1,21 +1,29 @@
-# Go Discussion Forum (Under Development)
+# Go Discussion Forum (v0.1)
 
-Welcome to the repository for the discussion forum project I'm currently building using the Go programming language! This project aims to create an interactive platform where users can discuss, share ideas, and interact within a community environment.
+Discussion Forum REST API made using Go language
 
 ## About This Project
 
-Ongoing project.
+This project has been finished and went initial release. Currently this project only showcase Back End development in providing REST API for Front End Development later on.
+
+API usage documentation will be provided later.
 
 ## Technologies Used
 
 Technlogies used so far :
 
-- **Go (Golang):** The primary programming language for the backend.
+- **Go (Golang) :** The primary programming language for the backend.
+- **MySQL :** Structured Query Database
+- **JWT :** For handling login session and token refreshments
 
 ## Project Status
 
-This project is **currently in active development**.
+Initial Release : v0.0.1
+
+## Author
+
+Created by Abi fadila
 
 ## License
 
-This project is licensed under the [License Name, e.g., MIT License]. See the `LICENSE` file for more details.
+This project is for study purpose, feel free to download and use the project. Or even better contribute in adding new features :)
