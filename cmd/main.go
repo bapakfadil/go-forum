@@ -5,8 +5,11 @@ import (
 
 	"github.com/bapakfadil/fastcampus/internal/configs"
 	"github.com/bapakfadil/fastcampus/internal/handlers/memberships"
+	"github.com/bapakfadil/fastcampus/internal/handlers/posts"
 	membershipRepo "github.com/bapakfadil/fastcampus/internal/repositories/memberships"
+	postRepo "github.com/bapakfadil/fastcampus/internal/repositories/posts"
 	membershipSvc "github.com/bapakfadil/fastcampus/internal/services/memberships"
+	postSvc "github.com/bapakfadil/fastcampus/internal/services/posts"
 	"github.com/bapakfadil/fastcampus/pkg/internalsql"
 	"github.com/gin-gonic/gin"
 )
@@ -38,12 +41,24 @@ func main() {
 		log.Fatal("Gagal inisiasi database!", err)
 	}
 
-	membershipRepo := membershipRepo.NewRepository(db)
-
-	membershipService := membershipSvc.NewService(cfg, membershipRepo)
+	// Middleware
+	r.Use(gin.Logger())
+	r.Use(gin.Recovery())
 	
+	// List of used Repositories
+	membershipRepo := membershipRepo.NewRepository(db)
+	postRepo := postRepo.NewRepository(db)
+	
+	// List of used Services
+	membershipService := membershipSvc.NewService(cfg, membershipRepo)
+	postService := postSvc.NewService(cfg, postRepo)
+	 
+	// List of used Handlers
 	membershipHandler := memberships.NewHandler(r, membershipService)
 	membershipHandler.RegisterRoute()
+	
+	postHandler := posts.NewHandler(r, postService)
+	postHandler.RegisterRoute()
 
 	r.Run(cfg.Service.Port) // listen and run the server
 }
