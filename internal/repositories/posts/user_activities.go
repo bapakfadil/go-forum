@@ -44,7 +44,7 @@ func (r *repository) UpdateUserActivity(ctx context.Context, model posts.UserAct
 	return nil
 }
 
-// To count like that post had
+// To count likes that post had
 func (r *repository) CountLikeByPostID(ctx context.Context, postID int64) (int, error) {
 	query := `SELECT COUNT(id) FROM user_activities WHERE post_id = ? AND is_liked = true`
 
